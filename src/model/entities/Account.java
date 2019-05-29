@@ -15,50 +15,52 @@ public abstract class Account {
         this.client = client;
     }
 
-    public
-    int getAccountNumber() {
+    public int getAccountNumber() {
         return accountNumber;
     }
 
-    public
-    Double getAmount() {
+    public Double getAmount() {
         return amount;
     }
 
-    public
-    void setAmount(Double amount) {
+    public void setAmount(Double amount) {
         this.amount = amount;
     }
 
-    public
-    Agency getAgency() {
+    public Agency getAgency() {
         return agency;
     }
 
 
-    public
-    Client getClient() {
+    public Client getClient() {
         return client;
     }
 
-    public
-    void setClient(Client client) {
+    public void setClient(Client client) {
         this.client = client;
     }
 
-    public
-    int getQtdTransfer() {
+    public int getQtdTransfer() {
         return qtdTransfer;
     }
 
-    public
-    int getQtdDeposit() {
+    public int getQtdDeposit() {
         return qtdDeposit;
     }
 
-    // public abstract void transfer(int accountNumber, double value);
-    //public abstract void deposit(double value);
+    public void deposit(double value){
+        amount += value;
+    }
 
+    public String transfer(Account transferAccount, double value){
+
+        if(amount - value >=0) {
+            amount -= value;
+            transferAccount.deposit(value);
+            return "Sucessfull!";
+        }
+        else return  "Error in transfer!";
+    }
 
     @Override
     public String toString(){

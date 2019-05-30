@@ -1,5 +1,7 @@
 package model.entities;
 
+import java.util.Date;
+
 public abstract class Account {
 
     private int accountNumber;
@@ -8,11 +10,13 @@ public abstract class Account {
     private Client client;
     private int qtdTransfer = 0;
     private int qtdDeposit = 0;
+    private Date dataStart;
 
     public Account(int accountNumber, Agency agency, Client client) {
         accountNumber = accountNumber;
         this.agency = agency;
         this.client = client;
+        this.dataStart = new Date();
     }
 
     public int getAccountNumber() {
@@ -48,14 +52,22 @@ public abstract class Account {
         return qtdDeposit;
     }
 
+    public Date getDataStart() {
+        return dataStart;
+    }
+
+    public void setDataStart(Date dataStart) {
+        this.dataStart = dataStart;
+    }
+
     public void deposit(double value){
-        amount += value;
+        this.amount += value;
     }
 
     public String transfer(Account transferAccount, double value){
 
-        if(amount - value >=0) {
-            amount -= value;
+        if(this.amount - value >=0) {
+            this.amount -= value;
             transferAccount.deposit(value);
             return "Sucessfull!";
         }

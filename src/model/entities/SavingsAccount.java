@@ -6,4 +6,8 @@ public class SavingsAccount extends Account{
     SavingsAccount(int accountNumber, Agency agency, Client client) {
         super(accountNumber, agency, client);
     }
+
+    public void addYield(){ //Calcula o rendimento da poupanca e acrescenta ao montante
+        deposit(getAmount()*0.14);
+    }
 }

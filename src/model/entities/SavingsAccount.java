@@ -1,5 +1,7 @@
 package model.entities;
 
+import static model.entities.TableRate.YIELD;
+
 public class SavingsAccount extends Account{
 
     public
@@ -8,6 +10,6 @@ public class SavingsAccount extends Account{
     }
 
     public void addYield(){ //Calcula o rendimento da poupanca e acrescenta ao montante
-        deposit(getAmount()*0.14);
+        deposit(getAmount()*YIELD);
     }
 }

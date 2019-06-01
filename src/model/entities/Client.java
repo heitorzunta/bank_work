@@ -2,6 +2,8 @@ package model.entities;
 
 import model.enums.ClientType;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Client {
@@ -15,7 +17,7 @@ public class Client {
 
 
     public
-    Client(String cpf, String name, Date birthDate, Address reside, ClientType classe) {
+    Client(String cpf, String name, Date birthDate, Address reside, ClientType classe)  {
         this.cpf = cpf;
         this.name = name;
         this.birthDate = birthDate;
@@ -88,6 +90,7 @@ public class Client {
         clientInfo.append("NAME: " + name);
         clientInfo.append("\n");
         clientInfo.append("QUANTITY ACCOUNTS: " + accountsAssocieted);
+        clientInfo.append("\nTIPO: " + classe);
 
         return clientInfo.toString();
     }

@@ -12,7 +12,17 @@ public class OpenAccount extends Accountant {
         return qtdCheque;
     }
 
-    public void issueCheque(){ // emitir cheque
-        this.qtdCheque++;
+    public void setQtdCheque(int qtdCheque) {
+        this.qtdCheque = qtdCheque;
+    }
+
+    //metodo para emitir Cheque
+    public void issueCheque(){
+        qtdCheque++;
+    }
+
+    //metodo para emprestimo
+    public boolean loan(double value){
+        return true;
     }
 }

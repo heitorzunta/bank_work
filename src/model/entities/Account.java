@@ -1,19 +1,23 @@
 package model.entities;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public abstract class Account {
+public abstract class Account implements Comparable<Account>{
 
+    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     private int accountNumber;
     private Double amount = 0.0; //montante de dinheiro na conta
     private Agency agency;
     private Client client;
     private int qtdTransfer = 0;
-    private int qtdDeposit = 0;
+
     private Date dataStart;
 
+
     public Account(int accountNumber, Agency agency, Client client) {
-        accountNumber = accountNumber;
+
+        this.accountNumber = accountNumber;
         this.agency = agency;
         this.client = client;
         this.dataStart = new Date();
@@ -48,10 +52,6 @@ public abstract class Account {
         return qtdTransfer;
     }
 
-    public int getQtdDeposit() {
-        return qtdDeposit;
-    }
-
     public Date getDataStart() {
         return dataStart;
     }
@@ -60,18 +60,25 @@ public abstract class Account {
         this.dataStart = dataStart;
     }
 
-    public void deposit(double value){
+    public boolean deposit(double value){
         this.amount += value;
+        return true;
     }
 
-    public String transfer(Account transferAccount, double value){
+    public boolean transfer(Account transferAccount, double value){
 
         if(this.amount - value >=0) {
             this.amount -= value;
             transferAccount.deposit(value);
-            return "Sucessfull!";
+            qtdTransfer++;
+            return true;
         }
-        else return  "Error in transfer!";
+        return false;
+    }
+
+    // TAXA COBRADA POR TIPO DE CLIENTE
+    public void taxClientType(double value){
+        setAmount(getAmount()- value);
     }
 
     @Override
@@ -83,4 +90,12 @@ public abstract class Account {
         infoAccount.append("NOME DO CLIENTE: " + client.getName() + "\n");
         return infoAccount.toString();
     }
+
+    @Override
+    public int compareTo(Account account){
+        if(accountNumber > account.getAccountNumber()) return  1;
+        else return -1;
+    }
+
+
 }

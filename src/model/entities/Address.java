@@ -86,16 +86,16 @@ public class Address {
 
     @Override
     public String toString(){
-        StringBuilder endereco = new StringBuilder();
+        StringBuilder enderecos = new StringBuilder();
 
-        endereco.append("Endereco: " + endereco + ", ");
-        endereco.append(numero + " ");
-        endereco.append("Bairro: " + bairro +"\n");
-        endereco.append(cep + " ");
-        endereco.append(cidade + " -- ");
-        endereco.append(estado + " ");
-        endereco.append(pais +"\n");
+        enderecos.append("Endereço: " + endereco + ", ");
+        enderecos.append(numero + " ");
+        enderecos.append("Bairro: " + bairro +"\n");
+        enderecos.append(cep + " ");
+        enderecos.append(cidade + " -- ");
+        enderecos.append(estado + " ");
+        enderecos.append(pais +"\n");
 
-        return endereco.toString();
+        return enderecos.toString();
     }
 }
